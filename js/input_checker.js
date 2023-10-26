@@ -1,14 +1,18 @@
 function safetyCheck(val){
-    xhtpp = new XMLHttpRequest();
-    xhtpp.open("GET", "../resources/badwordlist.txt")
-
-    xhtpp.onload = function(){
-
+    //window.alert("safetyCHeck Fired!")
+    console.debug("Start check");
+    const xhtpp = new XMLHttpRequest();
+    xhtpp.onreadystatechange = function(){
         
+        window.alert("Hello!");
+        badwordstring = this.responseText;
     }
             //if bad word return with error/box
 
             //no bad words call chatgptretriever
+    xhtpp.open("GET", "badwordlist.txt");
+    xhtpp.send();
+    console.debug(badwordstring);
 }
 
 function search(pattern, inputtext){
