@@ -1,5 +1,5 @@
 function safetyCheck(val){
-    //window.alert("safetyCHeck Fired!")
+    window.alert("safetyCHeck Fired!")
     console.debug("Start check");
     const xhtpp = new XMLHttpRequest();
     xhtpp.onreadystatechange = function(){
