@@ -3,6 +3,7 @@ function writeOpenAIResponse(message){
 }
 
 
+const { json } = require("express");
 var http = require("http");
 var options = {
     host: "127.0.0.1/",
@@ -21,7 +22,7 @@ const openai = new OpenAI();
 function getOpenAIResposne(messagecontent){
  
     var req = http.request(options, function(res){
-        const completion = openai.chat.completions.create({
+        const completion = JSON.stringify({
    
             messages: [
                 {
@@ -31,7 +32,9 @@ function getOpenAIResposne(messagecontent){
                 {
                     role: "user",
                     content: messagecontent
-                }]
+                }],
+                mode: "instruct",
+                instruction_template: "Alpaca:"
           });
 
           res.on(completion, function(chunk){
